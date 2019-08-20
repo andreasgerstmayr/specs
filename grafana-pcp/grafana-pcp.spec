@@ -37,7 +37,7 @@ echo 'Grafana plugins are always pre-built in the "dist" directory'
 [ -f dist/module.js.map ] || exit 1 # fail
 
 %check
-./node_modules/jest-cli/bin/jest.js
+./node_modules/jest-cli/bin/jest.js --silent
 
 %install
 install -d -m 755 %{buildroot}/%{install_dir}
