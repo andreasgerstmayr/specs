@@ -5,7 +5,6 @@ Summary:        Performance Co-Pilot App for Grafana
 
 %global         github https://github.com/performancecopilot/grafana-pcp
 %global         install_dir %{_sharedstatedir}/grafana/plugins/grafana-pcp
-%global         _debugsource_template %{nil} # avoid empty debugsourcefiles.list
 
 BuildArch:      noarch
 ExclusiveArch:  %{nodejs_arches}
@@ -15,16 +14,22 @@ URL:            %{github}
 
 Source0:        %{github}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        grafana-pcp-deps-%{version}.tar.xz
+Source2:        create_dependency_bundle.sh
 
 BuildRequires:  nodejs
 Requires:       pcp >= 4.3.4
 Requires:       grafana >= 6.2.2
 Suggests:       redis >= 5.0.4
 
-Obsoletes:      grafana-pcp-datasource
-Obsoletes:      grafana-pcp-redis
-
 # Bundled npm packages
+Provides: bundled(nodejs-@babel/cli) = 7.5.5
+Provides: bundled(nodejs-@babel/core) = 7.5.5
+Provides: bundled(nodejs-@babel/preset-env) = 7.5.5
+Provides: bundled(nodejs-@babel/preset-typescript) = 7.3.3
+Provides: bundled(nodejs-@types/benchmark) = 1.0.31
+Provides: bundled(nodejs-@types/grafana) = 4.6.3
+Provides: bundled(nodejs-@types/jest) = 23.3.14
+Provides: bundled(nodejs-@types/lodash) = 4.14.136
 Provides: bundled(nodejs-babel-jest) = 24.8.0
 Provides: bundled(nodejs-babel-loader) = 8.0.6
 Provides: bundled(nodejs-benchmark) = 2.1.4
@@ -33,9 +38,8 @@ Provides: bundled(nodejs-copy-webpack-plugin) = 4.6.0
 Provides: bundled(nodejs-core-js) = 3.1.4
 Provides: bundled(nodejs-css-loader) = 1.0.1
 Provides: bundled(nodejs-expr-eval) = 1.2.3
-Provides: bundled(nodejs-jest-date-mock) = 1.0.7
 Provides: bundled(nodejs-jest) = 24.8.0
-Provides: bundled(nodejs-jsdom) = 11.12.0
+Provides: bundled(nodejs-jest-date-mock) = 1.0.7
 Provides: bundled(nodejs-jsdom) = 9.12.0
 Provides: bundled(nodejs-lodash) = 4.17.15
 Provides: bundled(nodejs-mocha) = 6.2.0
@@ -47,13 +51,13 @@ Provides: bundled(nodejs-request) = 2.88.0
 Provides: bundled(nodejs-style-loader) = 0.22.1
 Provides: bundled(nodejs-ts-jest) = 24.0.2
 Provides: bundled(nodejs-ts-loader) = 4.5.0
-Provides: bundled(nodejs-tslint-config-airbnb) = 5.11.1
 Provides: bundled(nodejs-tslint) = 5.18.0
+Provides: bundled(nodejs-tslint-config-airbnb) = 5.11.1
 Provides: bundled(nodejs-typescript) = 3.5.3
 Provides: bundled(nodejs-uglifyjs-webpack-plugin) = 2.2.0
 Provides: bundled(nodejs-weak) = 1.0.1
-Provides: bundled(nodejs-webpack-cli) = 3.3.6
 Provides: bundled(nodejs-webpack) = 4.39.1
+Provides: bundled(nodejs-webpack-cli) = 3.3.6
 
 
 %description

@@ -2,9 +2,9 @@
 import sys
 import json
 import urllib.request
+import tarfile
 
-
-def update_spec(spec_path):
+def update_spec(spec_path, deps_bundle_path):
     version = None
     spec_provides = []
     with open(spec_path) as spec:
@@ -23,21 +23,15 @@ def update_spec(spec_path):
     with urllib.request.urlopen(package_json_url) as response:
         package_json = json.loads(response.read())
 
-    yarn_lock_url = 'https://raw.githubusercontent.com/performancecopilot/grafana-pcp/release-{}/yarn.lock'.format(version)
-    yarn_lock = None
-    with urllib.request.urlopen(yarn_lock_url) as response:
-        yarn_lock = response.read().decode('utf8')
-
     dependencies = list(package_json['dependencies'].keys()) + list(package_json['devDependencies'].keys())
-    yarn_lock = '\n'.join((yarn_lock.split('\n'))[4:]) # skip header
+    deps_bundle = tarfile.open(deps_bundle_path, "r")
     provides = []
-    for pkg in yarn_lock.split('\n\n'):
-        lines = pkg.split('\n')
-        pkg_name = lines[0].split('@')[0]
-        pkg_version = lines[1].split('"')[1]
-
-        if pkg_name in dependencies:
-            provides.append('Provides: bundled(nodejs-{}) = {}'.format(pkg_name, pkg_version))
+    for pkg in dependencies:
+        f = deps_bundle.extractfile('node_modules/{}/package.json'.format(pkg))
+        pkg_json = json.load(f)
+        provides.append('Provides: bundled(nodejs-{}) = {}'.format(pkg_json["name"], pkg_json["version"]))
+    deps_bundle.close()
+    provides.sort()
 
     if spec_provides == provides:
         print ('Spec provides section is up-to-date')
@@ -48,5 +42,9 @@ def update_spec(spec_path):
         return False
 
 if __name__ == '__main__':
-    is_uptodate = update_spec(sys.argv[1])
+    if len(sys.argv) != 3:
+        print ("usage: {} grafana.spec grafana-pcp-deps.tar.xz".format(sys.argv[0]))
+        sys.exit(1)
+
+    is_uptodate = update_spec(sys.argv[1], sys.argv[2])
     sys.exit(0 if is_uptodate else 1)
