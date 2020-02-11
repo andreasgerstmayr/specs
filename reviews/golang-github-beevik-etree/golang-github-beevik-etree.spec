@@ -3,8 +3,8 @@
 
 # https://github.com/beevik/etree
 %global goipath         github.com/beevik/etree
-Version:                1.0.1
-%global tag             v1.0.1
+Version:                1.1.0
+%global tag             v1.1.0
 
 %gometa
 
@@ -42,6 +42,6 @@ Source0:        %{gosource}
 %gopkgfiles
 
 %changelog
-* Fri Feb 07 16:34:05 CET 2020 Andreas Gerstmayr <agerstmayr@redhat.com> - 1.0.1-1
+* Fri Feb 07 16:34:05 CET 2020 Andreas Gerstmayr <agerstmayr@redhat.com> - 1.1.0-1
 - Initial package
 
