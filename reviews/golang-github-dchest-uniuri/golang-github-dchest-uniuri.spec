@@ -16,7 +16,7 @@ unique objects.}
 Name:           %{goname}
 Version:        0
 Release:        0.1%{?dist}
-Summary:        Go package uniuri generates random strings good for use in URIs to identify unique objects
+Summary:        Go package to generate random strings for use in URIs
 
 License:        Public Domain
 
