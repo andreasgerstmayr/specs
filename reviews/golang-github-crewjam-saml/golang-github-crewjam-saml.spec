@@ -3,8 +3,8 @@
 
 # https://github.com/crewjam/saml
 %global goipath         github.com/crewjam/saml
-Version:                0.3.0
-%global tag             v0.3.0
+Version:                0.4.0
+%global tag             v0.4.0
 
 %gometa
 
@@ -24,6 +24,7 @@ URL:            %{gourl}
 Source0:        %{gosource}
 
 BuildRequires:  golang(github.com/beevik/etree)
+BuildRequires:  golang(github.com/crewjam/httperr)
 BuildRequires:  golang(github.com/dchest/uniuri)
 BuildRequires:  golang(github.com/dgrijalva/jwt-go)
 BuildRequires:  golang(github.com/kr/pretty)
@@ -58,6 +59,6 @@ BuildRequires:  golang(github.com/stretchr/testify/assert)
 %gopkgfiles
 
 %changelog
-* Fri Feb 07 16:31:06 CET 2020 Andreas Gerstmayr <agerstmayr@redhat.com> - 0.3.0-1
+* Tue Feb 18 11:19:56 CET 2020 Andreas Gerstmayr <agerstmayr@redhat.com> - 0.4.0-1
 - Initial package
 
