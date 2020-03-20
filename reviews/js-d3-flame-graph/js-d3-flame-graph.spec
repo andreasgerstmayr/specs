@@ -50,10 +50,12 @@ Provides: bundled(nodejs-webpack-dev-server) = 3.10.3
 %description
 A D3.js plugin that produces flame graphs from hierarchical data.
 
+
 %package doc
-Summary: js-d3-flame-graph documentation and example files
+Summary: Documentation and example files for js-d3-flame-graph
+
 %description doc
-js-d3-flame-graph documentation and example files
+Documentation and example files for js-d3-flame-graph.
 
 
 %prep
