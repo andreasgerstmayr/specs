@@ -4,7 +4,7 @@ The js-d3-flame-graph package
 
 ## Build instructions
 ```
-VER=2.1.9
+VER=3.0.2
 spectool -g js-d3-flame-graph.spec
 ./create_dependency_bundle.sh d3-flame-graph-$VER.tar.gz d3-flame-graph-deps-$VER.tar.xz
 ./check_npm_dependencies.py js-d3-flame-graph.spec d3-flame-graph-$VER.tar.gz d3-flame-graph-deps-$VER.tar.xz

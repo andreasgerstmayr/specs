@@ -1,8 +1,8 @@
 %global         pkgname d3-flame-graph
-%global         github https://github.com/andreasgerstmayr/d3-flame-graph
+%global         github https://github.com/spiermar/d3-flame-graph
 
 Name:           js-d3-flame-graph
-Version:        2.1.9
+Version:        3.0.2
 Release:        1%{?dist}
 Summary:        A D3.js plugin that produces flame graphs
 
@@ -23,13 +23,13 @@ Requires:       web-assets-filesystem
 Provides: bundled(nodejs-clean-webpack-plugin) = 3.0.0
 Provides: bundled(nodejs-copy-webpack-plugin) = 5.1.1
 Provides: bundled(nodejs-css-loader) = 3.4.2
-Provides: bundled(nodejs-d3-array) = 1.2.4
+Provides: bundled(nodejs-d3-array) = 2.4.0
+Provides: bundled(nodejs-d3-dispatch) = 1.0.6
 Provides: bundled(nodejs-d3-ease) = 1.0.6
 Provides: bundled(nodejs-d3-format) = 1.4.3
 Provides: bundled(nodejs-d3-hierarchy) = 1.1.9
-Provides: bundled(nodejs-d3-scale) = 2.2.2
+Provides: bundled(nodejs-d3-scale) = 3.2.1
 Provides: bundled(nodejs-d3-selection) = 1.4.1
-Provides: bundled(nodejs-d3-tip) = 0.9.1
 Provides: bundled(nodejs-d3-transition) = 1.3.2
 Provides: bundled(nodejs-eslint) = 6.8.0
 Provides: bundled(nodejs-eslint-config-standard) = 14.1.0
@@ -38,12 +38,12 @@ Provides: bundled(nodejs-eslint-plugin-import) = 2.20.1
 Provides: bundled(nodejs-eslint-plugin-node) = 11.0.0
 Provides: bundled(nodejs-eslint-plugin-promise) = 4.2.1
 Provides: bundled(nodejs-eslint-plugin-standard) = 4.0.1
-Provides: bundled(nodejs-html-webpack-inline-source-plugin) = 0.0.10
 Provides: bundled(nodejs-html-webpack-plugin) = 3.2.0
+Provides: bundled(nodejs-script-ext-html-webpack-plugin) = 2.1.4
 Provides: bundled(nodejs-style-loader) = 1.1.3
-Provides: bundled(nodejs-tape) = 4.13.0
+Provides: bundled(nodejs-tape) = 4.13.2
 Provides: bundled(nodejs-terser-webpack-plugin) = 2.3.5
-Provides: bundled(nodejs-webpack) = 4.41.6
+Provides: bundled(nodejs-webpack) = 4.42.0
 Provides: bundled(nodejs-webpack-cli) = 3.3.11
 Provides: bundled(nodejs-webpack-dev-server) = 3.10.3
 
@@ -61,7 +61,9 @@ rm -rf dist
 
 %install
 install -d -m 755 %{buildroot}/%{_datadir}/%{pkgname}
-mv dist/template.html %{buildroot}/%{_datadir}/%{pkgname}
+mv dist/templates/* %{buildroot}/%{_datadir}/%{pkgname}
+rmdir dist/templates
+
 install -d -m 755 %{buildroot}/%{_jsdir}/%{pkgname}
 cp -a dist/* %{buildroot}/%{_jsdir}/%{pkgname}
 
@@ -73,5 +75,5 @@ cp -a dist/* %{buildroot}/%{_jsdir}/%{pkgname}
 %doc README.md examples
 
 %changelog
-* Thu Feb 20 2020 Andreas Gerstmayr <agerstmayr@redhat.com> 2.1.9-1
+* Fri Mar 20 2020 Andreas Gerstmayr <agerstmayr@redhat.com> 3.0.2-1
 - initial version

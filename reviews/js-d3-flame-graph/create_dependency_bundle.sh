@@ -17,7 +17,6 @@ pushd "$(mktemp -d)"
 
 echo Extracting sources...
 tar xfz "$SRC"
-ls
 cd d3-flame-graph-*
 
 echo Applying patches...
