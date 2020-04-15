@@ -55,7 +55,7 @@ enabled = true
 # Redis connection spec(s) - could be any individual cluster host,
 # and all hosts in the cluster will be automatically discovered --
 # alternately, use comma-separated hostspecs (non-clustered setup)
-servers = ${PMPROXY_PMSERIES_SERVERS}
+servers = ${REDIS_SERVERS}
 
 # number of elements from scan calls (https://redis.io/commands/scan)
 cursor.count = 256

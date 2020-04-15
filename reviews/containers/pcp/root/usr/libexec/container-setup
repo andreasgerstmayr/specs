@@ -1,11 +1,11 @@
 #!/bin/sh -eu
 
 : ${HOST_MOUNT:=''}
-: ${PMPROXY_PMSERIES_SERVERS:='localhost:6379'}
+: ${REDIS_SERVERS:='localhost:6379'}
 
 mkdir /etc/systemd/system/pmcd.service.d
 envsubst '$HOST_MOUNT' < /usr/share/container-scripts/pcp/10-host_mount.conf.template > /etc/systemd/system/pmcd.service.d/10-host_mount.conf
-envsubst '$PMPROXY_PMSERIES_SERVERS' < /usr/share/container-scripts/pcp/pmproxy.conf.template > /etc/pcp/pmproxy/pmproxy.conf
+envsubst '$REDIS_SERVERS' < /usr/share/container-scripts/pcp/pmproxy.conf.template > /etc/pcp/pmproxy/pmproxy.conf
 
 echo Starting systemd...
 exec "$@"

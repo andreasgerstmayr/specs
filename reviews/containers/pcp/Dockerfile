@@ -1,14 +1,20 @@
-FROM registry.fedoraproject.org/fedora:rawhide
+FROM registry.fedoraproject.org/fedora:latest
 
 ENV SUMMARY="Performance Co-Pilot" \
     DESCRIPTION="Performance Co-Pilot is a system performance analysis toolkit."
 
+ENV VERSION=0 \
+    ARCH=x86_64
+
 LABEL name="${FGC}/pcp" \
       summary="${SUMMARY}" \
       description="${DESCRIPTION}" \
+      version="$VERSION" \
+      architecture="$ARCH" \
       usage="podman run -d --systemd always -p 44322:44322 -v pcp-archives:/var/log/pcp/pmlogger --name pcp ${FGC}/pcp" \
-      maintainer="PCP Team <pcp-team@redhat.com>" \
-      version="0" \
+      maintainer="PCP Team <pcp@groups.io>" \
+      help="cat /README.md" \
+      url="https://src.fedoraproject.org/container/pcp" \
       com.redhat.component="pcp" \
       io.k8s.display-name="Performance Co-Pilot" \
       io.k8s.description="${DESCRIPTION}" \

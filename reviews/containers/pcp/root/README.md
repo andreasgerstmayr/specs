@@ -35,7 +35,7 @@ $ sudo podman run -d \
 
 Path inside the container to the bind mount of `/` on the host.
 
-### `PMPROXY_PMSERIES_SERVERS`
+### `REDIS_SERVERS`
 
 Redis connection spec(s) - could be any individual cluster host, and all hosts in the cluster will be automatically discovered.
 Alternately, use comma-separated hostspecs (non-clustered setup)
