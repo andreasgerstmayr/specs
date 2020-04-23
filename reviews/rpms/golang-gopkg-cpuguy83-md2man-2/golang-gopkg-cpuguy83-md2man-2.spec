@@ -35,6 +35,8 @@ BuildRequires:  golang(github.com/russross/blackfriday/v2)
 %goprep
 
 %build
+mkdir -p _build/src/github.com/cpuguy83/go-md2man
+cp -P _build/src/gopkg.in/cpuguy83/go-md2man.v2 _build/src/github.com/cpuguy83/go-md2man/v2
 %gobuild -o %{gobuilddir}/bin/go-md2man %{goipath}
 
 %install
