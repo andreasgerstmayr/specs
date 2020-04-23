@@ -2,13 +2,10 @@
 %bcond_without check
 
 # https://github.com/urfave/cli
-%global goipath         gopkg.in/urfave/cli.v2
-%global forgeurl        https://github.com/urfave/cli
+%global goipath         github.com/urfave/cli/v2
 Version:                2.2.0
 
 %gometa
-
-%global goaltipaths     github.com/urfave/cli/v2
 
 %global common_description %{expand:
 A simple, fast, and fun package for building command line apps in Go.}
@@ -41,14 +38,12 @@ BuildRequires:  golang(gopkg.in/yaml.v2)
 
 %if %{with check}
 %check
-mkdir -p _build/src/github.com/urfave/cli
-cp -P _build/src/gopkg.in/urfave/cli.v2 _build/src/github.com/urfave/cli/v2
 %gocheck
 %endif
 
 %gopkgfiles
 
 %changelog
-* Tue Apr 21 19:24:12 CEST 2020 Andreas Gerstmayr <agerstmayr@redhat.com> - 2.2.0-1
+* Thu Apr 23 20:13:44 CEST 2020 Andreas Gerstmayr <agerstmayr@redhat.com> - 2.2.0-1
 - Initial package
 
