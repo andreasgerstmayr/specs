@@ -1,7 +1,7 @@
 %define base_name i3
 
 Name:           i3-gaps
-Version:        4.17.1
+Version:        4.18.1
 Release:        1%{?dist}
 Summary:        i3 with more features
 License:        BSD
@@ -122,6 +122,9 @@ install -Dpm0644 %{SOURCE1} \
 %doc docs/*.{html,png} pseudo-doc/doxygen/
 
 %changelog
+* Mon May 25 2020 Andreas Gerstmayr <agerstmayr@redhat.com> - 4.18.1-1
+* Update to 4.18.1
+
 * Fri Dec 06 2019 Greg Wildman <greg@techno.co.za> - 4.17.1-1
 - Update to new version
 
