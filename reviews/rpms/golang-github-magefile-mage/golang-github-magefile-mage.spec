@@ -56,5 +56,5 @@ install -m 0755 -vp %{gobuilddir}/bin/* %{buildroot}%{_bindir}/
 %gopkgfiles
 
 %changelog
-* Thu Jul 09 16:37:05 CEST 2020 Andreas Gerstmayr <agerstmayr@redhat.com> - v1.10.0-1
+* Thu Jul 09 16:37:05 CEST 2020 Andreas Gerstmayr <agerstmayr@redhat.com> - 1.10.0-1
 - Initial package
